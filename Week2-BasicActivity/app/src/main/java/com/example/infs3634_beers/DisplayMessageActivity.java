@@ -19,6 +19,6 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         //Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
-        textView.setText(message);
+        textView.setText(message); //Commentsz
     }
 }

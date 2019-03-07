@@ -1,9 +1,10 @@
-package com.example.beers_detailedactivity;
+package com.example.beers_recycleview;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
 
 public class DetailedActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.beers_detailedactivity;
+package com.example.beers_recycleview;
 
 import org.junit.Test;
 

@@ -3,38 +3,45 @@ package com.example.beers_recycleview.RecyclerView;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.beers_recycleview.Beer;
 import com.example.beers_recycleview.R;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class BeersAdapter extends RecyclerView.Adapter<BeersAdapter.BeersViewHolder> {
-    private ArrayList<Beer> beers = Beer.getDummyBeers();
+    private List<Beer> beers;
     public static class BeersViewHolder extends RecyclerView.ViewHolder {
-        public TextView textView;
-        public  BeersViewHolder (TextView v){
-            super(v);
-            textView = v;
+        public ImageView beerImage;
+        public  TextView beerName;
+        public  TextView beerDesc;
+        public  BeersViewHolder (View itemView){
+            super(itemView);
+            beerImage = itemView.findViewById(R.id.beerImageLayout);
+            beerName = itemView.findViewById(R.id.beerNameLayout);
+            beerDesc = itemView.findViewById(R.id.beerDescLayout);
         }
     }
-    public BeersAdapter(ArrayList<Beer> b){
+    public BeersAdapter(List<Beer> b){
         beers = b;
     }
     @Override
     public BeersAdapter.BeersViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_main, parent, false);
-
-        BeersViewHolder vh = new BeersViewHolder(v);
-        return vh;
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View itemView = inflater.inflate(R.layout.beer, parent,false);
+        return new BeersViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(BeersViewHolder holder, int pos) {
-        holder.textView.setText(beers.get(pos).getName());
+        holder.beerName.setText(beers.get(pos).getName());
+        holder.beerDesc.setText(beers.get(pos).getShortDescription());
 
     }
 

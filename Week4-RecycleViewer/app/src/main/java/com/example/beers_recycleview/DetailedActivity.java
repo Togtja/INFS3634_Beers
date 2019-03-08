@@ -26,7 +26,7 @@ public class DetailedActivity extends AppCompatActivity {
         beerShortDesc.setText(theBeer.getShortDescription());
         //The beer description
         TextView beerDesc = findViewById(R.id.BeerDesc);
-        beerDesc.setText(theBeer.getDescription());
+        beerDesc.setText(theBeer.getDescription() + '\n');
         //The ABV nr
         TextView ABVnr = findViewById(R.id.ABV_Nr);
         ABVnr.setText(Double.toString(theBeer.getAbv())+"%");

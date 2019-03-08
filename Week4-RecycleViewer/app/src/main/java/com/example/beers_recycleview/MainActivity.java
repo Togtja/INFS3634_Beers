@@ -12,10 +12,11 @@ import android.view.View;
 import com.example.beers_recycleview.RecyclerView.BeersAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<Beer> beers;
+    private List<Beer> beers = new ArrayList<Beer>();
     private RecyclerView rV;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -33,18 +34,30 @@ public class MainActivity extends AppCompatActivity {
         rV.setLayoutManager(layoutManager);
         mAdapter = new BeersAdapter(beers);
         rV.setAdapter(mAdapter);
+        openDetailedActivity(rV);
 
 
 
     }
+
     public void openDetailedActivity(View view){
+        final Intent intent = new Intent(this, DetailedActivity.class);
+        rV.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, rV ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Beer theBeer = beers.get(position);
+                        intent.putExtra("Beer", theBeer);
+                        startActivity(intent);
 
-        Beer beer_1 = beers.get(2);
-        Intent intent = new Intent(this, DetailedActivity.class);
+                    }
 
-        intent.putExtra("Beer", beer_1);
-
-        startActivity(intent);
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        //Do on long click
+                    }
+                })
+        );
     }
 
 }

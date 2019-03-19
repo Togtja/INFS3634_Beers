@@ -1,4 +1,4 @@
-package com.example.beers_recycleview;
+package com.example.beers_fragmnet;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

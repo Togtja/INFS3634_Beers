@@ -1,4 +1,4 @@
-package com.example.beers_recycleview;
+package com.example.beers_fragmnet;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.beers_recycleview;
+package com.example.beers_fragmnet;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

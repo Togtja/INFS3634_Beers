@@ -1,4 +1,4 @@
-package com.example.beers_recycleview;
+package com.example.beers_fragmnet;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.beers_fragmnet.Beer;
 import com.example.beers_fragmnet.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -47,6 +48,4 @@ public class BeersAdapter extends RecyclerView.Adapter<BeersAdapter.BeersViewHol
     public int getItemCount() {
         return beers.size();
     }
-
-
 }

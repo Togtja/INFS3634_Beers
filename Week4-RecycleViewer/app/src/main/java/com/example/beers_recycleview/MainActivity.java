@@ -35,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new BeersAdapter(beers);
         rV.setAdapter(mAdapter);
         openDetailedActivity(rV);
-
-
-
     }
 
     public void openDetailedActivity(View view){

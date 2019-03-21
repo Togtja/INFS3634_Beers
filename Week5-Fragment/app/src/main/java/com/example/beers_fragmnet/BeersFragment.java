@@ -1,6 +1,7 @@
 package com.example.beers_fragmnet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,6 +34,8 @@ public class BeersFragment extends Fragment {
 
     private String message;
 
+    private  Beer theBeer;
+
     public BeersFragment() {
         // Required empty public constructor
     }
@@ -58,6 +61,7 @@ public class BeersFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -66,13 +70,49 @@ public class BeersFragment extends Fragment {
         if(bundle != null){
             message = bundle.getString("DETAIL");
         }
+        */
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_beers, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_mainbeer, container, false);
+        //get the intent
+        //Intent intent = getIntent();
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            theBeer = (Beer) bundle.getSerializable("Beer");
+            //The Beer name
+            TextView beerName = view.findViewById(R.id.BeerName);
+            beerName.setText(theBeer.getName());
+            //The title
+            //setTitle(theBeer.getName());
+            //The beer short desc
+            TextView beerShortDesc = view.findViewById(R.id.BeerShortDesc);
+            beerShortDesc.setText(theBeer.getShortDescription());
+            //The beer description
+            TextView beerDesc = view.findViewById(R.id.BeerDesc);
+            beerDesc.setText(theBeer.getDescription() + '\n');
+            //The ABV nr
+            TextView ABVnr = view.findViewById(R.id.ABV_Nr);
+            ABVnr.setText(Double.toString(theBeer.getAbv())+"%");
+            //The IBU
+            TextView ibu = view.findViewById(R.id.BeerIBU);
+            ibu.setText("IBU: " + theBeer.getIbuMin() + " - " + theBeer.getIbuMax());
+            //The SRM (I know I spelled it SMR but don't bother to fix it now)
+            TextView smr = view.findViewById(R.id.BeerSMR);
+            smr.setText("SRM: " + theBeer.getSrmMin() + " - " + theBeer.getSrmMax());
+            //The brand name
+            TextView brandName = view.findViewById(R.id.BrandName);
+            brandName.setText(theBeer.getBrewery());
+        }
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -86,12 +126,14 @@ public class BeersFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        /*
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+        */
     }
 
     @Override
@@ -112,6 +154,10 @@ public class BeersFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(int position);
+        //void onFragmentInteraction(int position);
+        // Currently no interactions needed
+    }
+    public void OnFragmentInteractionListener(MainActivity activity) {
+        //mListener = activity;
     }
 }

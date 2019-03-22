@@ -9,6 +9,9 @@ import android.util.Log;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+//Inspiration taken from JacobSamro's Expandable RecyclerView
+// https://github.com/Aroliant/Expandable-RecyclerView-Android
+
 public class MainActivity extends AppCompatActivity {
 
 

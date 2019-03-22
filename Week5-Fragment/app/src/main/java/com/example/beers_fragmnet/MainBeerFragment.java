@@ -32,7 +32,7 @@ public class MainBeerFragment extends Fragment implements BeersFragment.OnFragme
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private List<Beer> beers = new ArrayList<>();
-    private BeersFragment beersFragment;
+   //t beersFragment;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -87,7 +87,7 @@ public class MainBeerFragment extends Fragment implements BeersFragment.OnFragme
                 new RecyclerItemClickListener(context, rV, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        beersFragment = new BeersFragment();
+                        BeersFragment beersFragment = new BeersFragment();
                         Beer theBeer = beers.get(position);
                         bundle.putSerializable("Beer", theBeer);
                         beersFragment.setArguments(bundle);

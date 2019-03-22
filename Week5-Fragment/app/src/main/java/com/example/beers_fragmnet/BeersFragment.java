@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class BeersFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         /*
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -81,16 +83,17 @@ public class BeersFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_mainbeer, container, false);
-        //get the intent
-        //Intent intent = getIntent();
+
         Bundle bundle = getArguments();
+
         if(bundle != null){
+            view.setVisibility(View.VISIBLE);
+
             theBeer = (Beer) bundle.getSerializable("Beer");
+            Log.d( "Click", "We click on" + theBeer.getName());
             //The Beer name
             TextView beerName = view.findViewById(R.id.BeerName);
             beerName.setText(theBeer.getName());
-            //The title
-            //setTitle(theBeer.getName());
             //The beer short desc
             TextView beerShortDesc = view.findViewById(R.id.BeerShortDesc);
             beerShortDesc.setText(theBeer.getShortDescription());
@@ -109,6 +112,11 @@ public class BeersFragment extends Fragment {
             //The brand name
             TextView brandName = view.findViewById(R.id.BrandName);
             brandName.setText(theBeer.getBrewery());
+
+        }
+        else{
+            view.setVisibility(View.GONE);
+            Log.d("NULL", "Empty bundle for a beer");
         }
 
 

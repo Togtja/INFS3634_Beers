@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.beers_fragmnet.R;
@@ -87,7 +89,7 @@ public class BeersFragment extends Fragment {
         Bundle bundle = getArguments();
 
         if(bundle != null){
-            view.setVisibility(View.VISIBLE);
+            //view.setVisibility(View.VISIBLE);
 
             theBeer = (Beer) bundle.getSerializable("Beer");
             Log.d( "Click", "We click on" + theBeer.getName());
@@ -115,7 +117,6 @@ public class BeersFragment extends Fragment {
 
         }
         else{
-            view.setVisibility(View.GONE);
             Log.d("NULL", "Empty bundle for a beer");
         }
 

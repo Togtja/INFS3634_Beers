@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:layout="@layout/beer" />
 
-    <fragment
+    <FrameLayout
         android:id="@+id/ViewBeerFragment"
         android:name="com.example.beers_fragmnet.BeersFragment"
         android:layout_width="0dp"

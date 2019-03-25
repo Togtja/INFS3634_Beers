@@ -1,21 +1,15 @@
 package com.example.beers_fragmnet;
 
-import android.app.Activity;
+
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import com.example.beers_fragmnet.RecyclerView.BeersAdapter;
 
@@ -70,7 +64,7 @@ public class MainBeerFragment extends Fragment implements BeersFragment.OnFragme
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         //View t_view = inflater.inflate(R.layout.fragment_mainbeer_list, container, false);
 
@@ -96,7 +90,8 @@ public class MainBeerFragment extends Fragment implements BeersFragment.OnFragme
                         bundle.putSerializable("Beer", theBeer);
                         beersFragment.setArguments(bundle);
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                        if(view.findViewById(R.id.ViewBeerFragment) == null){
+                        View parentView = inflater.inflate(R.layout.activity_main, container, false);
+                        if(parentView.findViewById(R.id.ViewBeerFragment) == null){
 
                             transaction.replace(R.id.ListFragment, beersFragment)
                                     .addToBackStack(null).commit();

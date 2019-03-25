@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/BeerItems"
         android:orientation="vertical">
 
         <LinearLayout
@@ -77,11 +78,7 @@
                 android:id="@+id/ABV_Nr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+
                 android:text="5.6%"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="30sp"
@@ -94,12 +91,7 @@
             <TextView
                 android:id="@+id/ABV_Txt"
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_height="wrap_content"
                 android:text="@string/ABV_Txt"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -111,13 +103,13 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/BeerSMR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
                     android:text="SMR: 11 -18"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -128,7 +120,6 @@
                     android:id="@+id/BeerIBU"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:text="IBU: 20 - 28"
                     app:layout_constraintEnd_toEndOf="@+id/Search"
                     app:layout_constraintHorizontal_bias="0.225"

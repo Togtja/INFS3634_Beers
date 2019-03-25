@@ -3,7 +3,10 @@ package com.example.beers_fragmnet;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.example.beers_fragmnet.RecyclerView.BeersAdapter;
 
@@ -92,8 +96,18 @@ public class MainBeerFragment extends Fragment implements BeersFragment.OnFragme
                         bundle.putSerializable("Beer", theBeer);
                         beersFragment.setArguments(bundle);
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                        transaction.replace(R.id.ViewBeerFragment, beersFragment)
-                        .addToBackStack(null).commit();
+                        if(view.findViewById(R.id.ViewBeerFragment) == null){
+
+                            transaction.replace(R.id.ListFragment, beersFragment)
+                                    .addToBackStack(null).commit();
+//                              FrameLayout t = view.findViewById(R.id.ListFragment);
+//                            t.setBackgroundColor(Color.rgb(255,214,214));
+                        }
+                        else{
+                            transaction.replace(R.id.ViewBeerFragment, beersFragment)
+                                    .addToBackStack(null).commit();
+                        }
+
 
 
                     }

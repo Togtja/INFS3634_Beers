@@ -6,18 +6,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.beers_api.RecyclerView.BeersAdapter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements MainBeerFragment.OnListFragmentInteractionListener {
-    private List<Beer> beers = new ArrayList<>();
     private MainBeerFragment AFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+/*
+
+
+
+        //Serialization
+        Beer BeerObj = new Beer("TestID","TestName","TestShortDesc","TestDesc",1.0,2,4,5,6,"TestBrewer");
+        Gson gson = new Gson();
+        String json = gson.toJson(BeerObj);
+
+        Log.d("JSON", json);
+        //Deserialization
+        Beer BeerObj2 = gson.fromJson(json, Beer.class);
+
+ */
+
+
+
         super.onCreate(savedInstanceState);
-        beers = Beer.getDummyBeers();
+
         setContentView(R.layout.activity_main);
 
         AFragment = new MainBeerFragment();
@@ -32,10 +53,6 @@ public class MainActivity extends AppCompatActivity implements MainBeerFragment.
     @Override
     public void onListFragmentInteraction(int position){
         Log.d("INSIDE", "We are inside onListFragmentInteraction in MainActivity");
-        Intent intent = new Intent(this, DetailedActivity.class);
-        Beer theBeer = beers.get(position);
-        intent.putExtra("Beer", theBeer);
-        startActivity(intent);
     }
 
     @Override

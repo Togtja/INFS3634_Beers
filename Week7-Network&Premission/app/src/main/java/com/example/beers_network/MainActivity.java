@@ -1,11 +1,17 @@
-package com.example.beers_api;
+package com.example.beers_network;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.beers_api.R;
+import com.example.beers_network.RecyclerView.BeersAdapter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements MainBeerFragment.OnListFragmentInteractionListener {

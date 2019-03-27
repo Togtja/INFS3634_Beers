@@ -1,4 +1,4 @@
-package com.example.beers_api;
+package com.example.beers_network;
 
 
 import android.content.Context;
@@ -11,8 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.beers_api.R;
-import com.example.beers_api.RecyclerView.BeersAdapter;
+import com.example.beers_network.RecyclerView.BeersAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

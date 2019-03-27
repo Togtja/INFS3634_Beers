@@ -1,10 +1,13 @@
-package com.example.beers_api;
+package com.example.beers_network;
 
+import com.example.beers_network.Beer;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonSerializer;
 
 import java.lang.reflect.Type;
 

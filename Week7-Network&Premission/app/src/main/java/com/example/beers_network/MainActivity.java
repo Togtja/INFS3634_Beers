@@ -1,21 +1,29 @@
 package com.example.beers_network;
 
-import android.content.Intent;
+
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.beers_network.RecyclerView.BeersAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity implements MainBeerFragment.OnListFragmentInteractionListener {
     private MainBeerFragment AFragment;
+    private List<Beer> beers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +43,50 @@ public class MainActivity extends AppCompatActivity implements MainBeerFragment.
 
  */
 
-
-
         super.onCreate(savedInstanceState);
+        //Deserialization
+        Type type =  new TypeToken<List<Beer>>(){}.getType();
 
-        setContentView(R.layout.activity_main);
+        Gson gsonBuilder = new GsonBuilder()
+                .registerTypeAdapter(type, new BeerDeserializer())
+                .create();
 
-        AFragment = new MainBeerFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.ListFragment, AFragment)
-                .commit();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://sandbox-api.brewerydb.com/v2/")
+                .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
+                .build();
+
+
+        BeerService client = retrofit.create(BeerService.class);
+        Call<List<Beer>> call = client.keyOfUser("0cafa2ad34d6df8c2e863a59c773394e", "Y");
+        call.enqueue(new Callback<List<Beer>>(){
+
+            @Override
+            public void onResponse(Call<List<Beer>> call, Response<List<Beer>> response) {
+                beers = new ArrayList<>();
+                beers = response.body();
+                setContentView(R.layout.activity_main);
+
+                Bundle bundle = new Bundle();
+                                                    //A cheat class to easily serialize a bundle
+                bundle.putSerializable("key_beer", new BundleBeerArray((ArrayList<Beer>) beers).getmlist());
+                AFragment = new MainBeerFragment();
+                AFragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.ListFragment, AFragment)
+                        .commit();
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Beer>> call, Throwable t) {
+                beers = Beer.getDummyBeers();
+                t.printStackTrace();
+                Log.d("NAY", "We called wrong func");
+            }
+        });
+
 
     }
 
